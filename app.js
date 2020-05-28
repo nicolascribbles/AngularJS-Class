@@ -1,14 +1,11 @@
 // MODULE
-var angularApp = angular.module('angularApp', ['ngMessages', 'ngResource']);
+var angularApp = angular.module('angularApp', []);
 
 // CONTROLLERS
-// For one of my changes in this update for the class, I learned to replace the function with an array where the function lives so that minification doesn't destroy my dependency injections
-angularApp.controller('mainController', ['$scope', '$log', function ($scope, $log, $filter, $resource) {
+angularApp.controller('mainController', ['$scope', '$timeout', function ($scope, $timeout) {
     $scope.name = 'Nicola';
-    $scope.formattedName = $filter('uppercase')($scope.name);
     
-    $log.info($scope.name);
-    $log.info($scope.formattedName);
-    
-    console.log($resource);
+    $timeout(function() {
+        $scope.name = 'Everybody';
+    }, 3000);
 }]);
