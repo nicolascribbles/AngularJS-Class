@@ -1,0 +1,39 @@
+
+<hr>
+
+<label for="name">Name</label>
+<input type="text" class="form-control" ng-model="name" />
+  
+<hr>
+<hr>
+  
+<div class="mb-5">
+   <label>What is your twitter handle?</label>
+   <input ng-model="handle" type="text" class="form-control">
+</div>
+                
+<div class="alert mt-5" role="alert" ng-show="handle.length !== characters"
+ ng-class="{ 'alert-warning': handle.length < characters, 'alert-danger': handle.length > characters  }">
+  <div ng-show="handle.length < characters">
+    You have less than 5 characters!
+  </div>
+   <div ng-show="handle.length > characters">
+    You have more than 5 characters!
+  </div>
+</div>
+<hr>
+<h1 ng-cloak>twitter.com/{{ lowercaseHandle() }}</h1>
+                
+<h3>Rules</h3>
+<ul>
+  <li ng-repeat="rule in rules">
+    {{ rule.RuleName }}
+  </li>
+</ul>
+
+<label for="newRule">New Rule:</label>
+<input type="text" class="form-control" id="newRule" ng-model="newRule"><a href="#" class="btn btn-info" ng-click="addRule()">Add</a>
+
+<hr>
+
+<button type="button" class="btn btn-primary" ng-click="alertClick()">Click me!</button>
