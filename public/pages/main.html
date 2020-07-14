@@ -5,6 +5,13 @@
 <input type="text" class="form-control" ng-model="name" />
   
 <hr>
+<h3>Search Results</h3>
+<label for="search">Search: </label>
+<input type="text" value="Doe" class="form-control">
+
+<div class="list-group pt-5">
+  <search-result></search-result>
+</div>
 <hr>
   
 <div class="mb-5">
@@ -23,16 +30,6 @@
 </div>
 <hr>
 <h1 ng-cloak>twitter.com/{{ lowercaseHandle() }}</h1>
-                
-<h3>Rules</h3>
-<ul>
-  <li ng-repeat="rule in rules">
-    {{ rule.RuleName }}
-  </li>
-</ul>
-
-<label for="newRule">New Rule:</label>
-<input type="text" class="form-control" id="newRule" ng-model="newRule"><a href="#" class="btn btn-info" ng-click="addRule()">Add</a>
 
 <hr>
 

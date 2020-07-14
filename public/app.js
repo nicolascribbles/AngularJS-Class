@@ -4,15 +4,15 @@ angularApp.config(function ($routeProvider) {
   
   $routeProvider
   .when('/', {
-    templateUrl: '/pages/main.html',
+    templateUrl: '/public/pages/main.html',
     controller: 'mainController' 
   })
   .when('/second/', {
-    templateUrl: '/pages/second.html',
+    templateUrl: '/public/pages/second.html',
     controller: 'secondController'
   })
   .when('/second/:num', {
-    templateUrl: '/pages/second.html',
+    templateUrl: '/public/pages/second.html',
     controller: 'secondController'
   });
   
@@ -26,6 +26,11 @@ angularApp.service('nameService', function(){
 });
 // CONTROLLERS
 angularApp.controller('mainController', ['$scope', '$filter', '$http', '$location', '$log', 'nameService', function ($scope, $filter, $http, $location, $log, nameService) {
+  
+  $scope.person = {
+    name: 'John Doe',
+    address: '555 Main St., New York, NY 111111'
+  }
   
   $scope.name = nameService.name;
   
@@ -80,7 +85,16 @@ angularApp.controller('secondController', ['$scope', '$log', '$routeParams', 'na
     nameService.name = $scope.name;
   });
 }]);
-
+angularApp.directive("searchResult", function(){
+  return {
+    restrict: 'AE',
+    templateUrl: '/public/directives/searchresult.html',
+    replace: true,
+    scope: {
+      personName: "@"
+    }
+  }
+});
 // Commented Code
 //   THIS IS THE NATIVE WAY  
 //    rulesrequest.onreadystatechange = function() {
